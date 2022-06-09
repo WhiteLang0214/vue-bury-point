@@ -1,0 +1,23 @@
+{
+  "name": "vue-buriy-point",
+  "version": "1.0.0",
+  "description": "vue3埋点",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhiteLang0214/vue-bury-point.git"
+  },
+  "keywords": [
+    "vue3",
+    "埋点"
+  ],
+  "author": "langxue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WhiteLang0214/vue-bury-point/issues"
+  },
+  "homepage": "https://github.com/WhiteLang0214/vue-bury-point#readme"
+}
