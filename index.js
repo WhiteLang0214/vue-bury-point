@@ -77,7 +77,7 @@ function baseDeviceParams() {
 // 获取浏览器代理信息
 function getUserAgent() {
   const { userAgent } = navigator;
-  const reg = /^([a-zA-Z]+\/[0-9]\d*\.?\d*)\s(\([^()]*\))\s([a-zA-Z]+\/\d+\.\d+)\s(\([^()]*\))\s(.+)/;
+  const reg = /^([a-zA-Z]+\/[0-9]\d*\.?\d*)\s(\([^()]*\))\s([a-zA-Z]+\/[\d\\.]*)\s(\([^()]*\))\s(.+)/;
   userAgent.match(reg);
 
   return {
