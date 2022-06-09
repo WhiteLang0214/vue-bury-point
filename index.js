@@ -1,5 +1,3 @@
-const url = '/ud.gif';
-
 
 // 浏览器信息
 const browserReg = {
@@ -207,16 +205,16 @@ function getParams(data, flag) {
   return str;
 }
 
-function sendUserPoint(params) {
+function sendUserPoint(url = '/ud.gif', params) {
   let p = getParams(params, 1);
   p = p.slice(0, p.length - 1);
-  sendData(p);
+  sendData(url +'?'+ p);
 }
 
-function sendDevicePoint(params) {
+function sendDevicePoint(url = '/ud.gif', params) {
   let p = getParams(params, 0);
   p = p.slice(0, p.length - 1);
-  sendData(p);
+  sendData(url +'?'+ p);
 }
 
 /**
@@ -224,13 +222,12 @@ function sendDevicePoint(params) {
  * @param {*} data 
  */
 function sendData(data) {
-  console.log('sendData:---------url----------', url + '?' + data);
-  // const img = new Image();
-  // img.onload = function() {};
-  // img.src = url + '?' + p;
+  const img = new Image();
+  img.onload = function() {};
+  img.src = data;
 }
 
-const Abpoint = {
+const Vbpoint = {
   install(Vue, options) {
     console.log(Vue, options)
 
@@ -246,19 +243,19 @@ const Abpoint = {
      * 埋点用户数据
      * @param {*} params 发送的参数
      */
-    Vue.config.globalProperties.sendUserPoint = (params) => sendUserPoint(params);
+    Vue.config.globalProperties.sendUserPoint = (url, params) => sendUserPoint(url, params);
 
     /**
      * 埋点设备数据
      * @param {*} params 
      */
-    Vue.config.globalProperties.sendDevicePoint = (params) => sendDevicePoint(params);
+    Vue.config.globalProperties.sendDevicePoint = (url, params) => sendDevicePoint(url, params);
 
   }
 }
 
 
-export default Abpoint
+export default Vbpoint
 
 export {
   sendUserPoint,
