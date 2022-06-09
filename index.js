@@ -1,3 +1,5 @@
+import { fmtDate } from './src/formatter.js';
+
 let defaultUrl = '/ud.gif';
 
 // 浏览器信息
@@ -38,23 +40,6 @@ function setEncodeUri(obj) {
     }
   }
   return newObj;
-}
-
-// 格式化时间为yyyy-MM-ddThh:mm:ss
-function fmtDate(value) {
-  const now = value ? new Date(value) : new Date();
-  const year = now.getFullYear();
-  const month = setZero(now.getMonth() + 1);
-  const day = setZero(now.getDate());
-  const h = setZero(now.getHours());
-  const m = setZero(now.getMinutes());
-  const s= setZero(now.getSeconds());
-  return `${year}-${month}-${day}T${h}:${m}:${s}`
-}
-
-// 补0
-function setZero(value) {
-  return value >= 10 ? value : '0' + value;
 }
 
 // 用户数据 公共参数
