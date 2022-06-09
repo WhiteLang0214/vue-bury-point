@@ -1,3 +1,4 @@
+let defaultUrl = '/ud.gif';
 
 // 浏览器信息
 const browserReg = {
@@ -205,13 +206,13 @@ function getParams(data, flag) {
   return str;
 }
 
-function sendUserPoint(url = '/ud.gif', params) {
+function sendUserPoint(url = defaultUrl, params) {
   let p = getParams(params, 1);
   p = p.slice(0, p.length - 1);
   sendData(url +'?'+ p);
 }
 
-function sendDevicePoint(url = '/ud.gif', params) {
+function sendDevicePoint(url = defaultUrl, params) {
   let p = getParams(params, 0);
   p = p.slice(0, p.length - 1);
   sendData(url +'?'+ p);
@@ -228,15 +229,28 @@ function sendData(data) {
 }
 
 const Vbpoint = {
-  install(Vue, options) {
-    console.log(Vue, options)
+  install(Vue) {
 
     // 指令
-    Vue.directive('ab-point', {
-      beforeMount(el, binding, vnode) {
-        console.log('directive-----', el, binding, vnode)
-        console.log("指令")
-      }
+    Vue.directive('vbpoint', {
+      mounted(el, binding) {
+        el.addEventListener(binding['arg'], () => {
+          const value = binding.value;
+          const { tt, url } = value;
+          let ttValue = (tt == 0 || tt == 1) ? tt : 1; // 如果没有传tt 则认为是用户数据
+          let urlValue = url || defaultUrl; // 如果没传url，默认 /ud.gif
+        
+          if (ttValue == 0) {
+            sendDevicePoint(urlValue, value);
+          }
+          if (ttValue == 1) {
+            sendUserPoint(urlValue, value);
+          }
+        })
+      },
+      unmounted(el, binding) {
+        el.removeEventListener(binding['arg'], () => {})
+      },
     })
 
     // 实例方法
