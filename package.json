@@ -1,6 +1,6 @@
 {
   "name": "vue-buriy-point",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "vue3埋点",
   "main": "index.js",
   "scripts": {
