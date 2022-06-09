@@ -40,6 +40,23 @@ function setEncodeUri(obj) {
   return newObj;
 }
 
+// 格式化时间为yyyy-MM-ddThh:mm:ss
+function fmtDate(value) {
+  const now = value ? new Date(value) : new Date();
+  const year = now.getFullYear();
+  const month = setZero(now.getMonth() + 1);
+  const day = setZero(now.getDate());
+  const h = setZero(now.getHours());
+  const m = setZero(now.getMinutes());
+  const s= setZero(now.getSeconds());
+  return `${year}-${month}-${day}T${h}:${m}:${s}`
+}
+
+// 补0
+function setZero(value) {
+  return value >= 10 ? value : '0' + value;
+}
+
 // 用户数据 公共参数
 function baseUserParmas() {
   const loginUserInfo = getUserInfo();
@@ -47,8 +64,8 @@ function baseUserParmas() {
     tt: 1,
     ai: "appId", // appId web端写死一个 不同应用不同
     uk: loginUserInfo.userId,
-    pt: new Date().valueOf(),
-    ct: new Date().valueOf(),
+    pt: fmtDate(),
+    ct: fmtDate(),
   }
   return setEncodeUri(obj)
 }
@@ -61,7 +78,7 @@ function baseDeviceParams() {
     tt: 0,
     ai: "appId", // appId
     uk: loginUserInfo.userId,
-    ct: new Date().valueOf(),
+    ct: fmtDate(),
     sn: sysName, // system name 操作系统名称 Intel mac os
     sv: sysVersion, // system version 操作系统版本 x 10_15_7
     dt: "pc", // device type 设备类型 
