@@ -66,8 +66,8 @@ function baseDeviceParams() {
     ct: fmtDate(),
     sn: sysName, // system name 操作系统名称 Intel mac os
     sv: sysVersion, // system version 操作系统版本 x 10_15_7
-    dt: "pc", // device type 设备类型 
-    b: browserName + "/" + browserVersion, // brand code 浏览器的信息  Chrome/102.0.0.0 Safari/537.36 
+    dt: browserName + "/" + browserVersion, // device type 设备类型 
+    b: browserName, // brand code 浏览器的信息  Chrome/102.0.0.0 Safari/537.36 
     av: "0.1.0", // app version app版本
     ti: loginUserInfo.tenantId, // 用户租户 企业id
   }
