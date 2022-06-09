@@ -235,6 +235,7 @@ const Vbpoint = {
     Vue.directive('ab-point', {
       beforeMount(el, binding, vnode) {
         console.log('directive-----', el, binding, vnode)
+        console.log("指令")
       }
     })
 
