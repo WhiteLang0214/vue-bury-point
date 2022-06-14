@@ -51,7 +51,7 @@ function baseUserParmas() {
     uk: loginUserInfo.userId,
     ct: fmtDate(),
   }
-  return setEncodeUri(obj)
+  return obj
 }
 
 // 设备信息 公共参数
@@ -70,7 +70,7 @@ function baseDeviceParams() {
     av: "0.1.0", // app version app版本
     ti: loginUserInfo.tenantId, // 用户租户 企业id
   }
-  return setEncodeUri(obj)
+  return obj;
 }
 
 // 获取浏览器代理信息
@@ -147,10 +147,10 @@ function getObjectValue(data) {
         const v = obj[key];
         const vType = getType(v);
         if (vType === 'String' || vType === 'Number') {
-          str += `${key}=${v}&`
+          str += `${key}=${encodeURIComponent(v)}&`
         }
         if (vType === 'Object') {
-          str += `${key}=${JSON.stringify(v)}&`
+          str += `${key}=${encodeURIComponent(JSON.stringify(v))}&`
         }
       }
     }
