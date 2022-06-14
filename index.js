@@ -31,16 +31,16 @@ function getUserInfo() {
 }
 
 // 编码
-function setEncodeUri(obj) {
-  let newObj = {};
-  const type = getType(obj);
-  if (type === 'Object') {
-    for(let key in obj) {
-      newObj[key] = encodeURIComponent(obj[key])
-    }
-  }
-  return newObj;
-}
+// function setEncodeUri(obj) {
+//   let newObj = {};
+//   const type = getType(obj);
+//   if (type === 'Object') {
+//     for(let key in obj) {
+//       newObj[key] = encodeURIComponent(obj[key])
+//     }
+//   }
+//   return newObj;
+// }
 
 // 用户数据 公共参数
 function baseUserParmas() {
