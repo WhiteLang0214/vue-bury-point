@@ -49,7 +49,6 @@ function baseUserParmas() {
     tt: 1,
     ai: "appId", // appId web端写死一个 不同应用不同
     uk: loginUserInfo.userId,
-    pt: fmtDate(),
     ct: fmtDate(),
   }
   return setEncodeUri(obj)
