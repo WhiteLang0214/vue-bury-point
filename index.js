@@ -25,7 +25,7 @@ function getUserInfo() {
   const userInfo = sessionStorage.getItem("store");
   if (userInfo) {
     const loginUserInfo = JSON.parse(sessionStorage.getItem("store")).loginUserInfo;
-    return loginUserInfo
+    return loginUserInfo || {}
   }
   return {}
 }
@@ -48,7 +48,7 @@ function baseUserParmas() {
   const obj = {
     tt: 1,
     ai: "appId", // appId web端写死一个 不同应用不同
-    uk: loginUserInfo.userId,
+    uk: loginUserInfo && loginUserInfo.userId,
     ct: fmtDate(),
   }
   return obj
@@ -61,14 +61,14 @@ function baseDeviceParams() {
   const obj =  { 
     tt: 0,
     ai: "appId", // appId
-    uk: loginUserInfo.userId,
+    uk: loginUserInfo && loginUserInfo.userId,
     ct: fmtDate(),
     sn: sysName, // system name 操作系统名称 Intel mac os
     sv: sysVersion, // system version 操作系统版本 x 10_15_7
     dt: browserName + "/" + browserVersion, // device type 设备类型 
     b: browserName, // brand code 浏览器的信息  Chrome/102.0.0.0 Safari/537.36 
     av: "0.1.0", // app version app版本
-    ti: loginUserInfo.tenantId, // 用户租户 企业id
+    ti: loginUserInfo && loginUserInfo.tenantId, // 用户租户 企业id
   }
   return obj;
 }
